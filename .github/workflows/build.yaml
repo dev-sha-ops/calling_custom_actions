@@ -9,6 +9,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: check Dependencies
+        run: |
+          ls -ali
+          pwd
+          npm install @actions/core
+          npm install @actions/github
+          apt install tree -y || true
+          tree
 
       - name: Run Custom Action
         uses: dev-sha-ops/shared_library/.github/actions/build@main
