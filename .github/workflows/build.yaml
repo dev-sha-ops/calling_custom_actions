@@ -1,5 +1,4 @@
 name: Use Custom Build Action
-
 on:
   push:
     branches:
