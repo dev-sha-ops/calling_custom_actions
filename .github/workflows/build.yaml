@@ -1,0 +1,18 @@
+name: Use Custom Build Action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Custom Action
+        uses: dev-sha-ops/shared_library/.github/actions/build@main
+        with:
+          tags: ${{ github.sha }}
