@@ -19,10 +19,10 @@ runs:
       id: version
       run: |
         if [[ -z "${{ inputs.version }}" ]]; then
-          echo "input_version=true" >> GITHUB_ENV
+          echo "input_version=false" >> GITHUB_ENV
         else
           echo "version=${{ inputs.version }}" >> $GITHUB_OUTPUT
-          echo "input_version=false" >> GITHUB_ENV
+          echo "input_version=true" >> GITHUB_ENV
         fi
     - name: Running Auto Version
       if: env.input_version == 'false'
