@@ -7,7 +7,10 @@ inputs:
     required: false
     type: string
     description: 'version'
-
+outputs:
+  version:
+    description: 'version'
+    value: ${{ steps.version.outputs.version }}
 runs:
   using: "composite"
   steps:
