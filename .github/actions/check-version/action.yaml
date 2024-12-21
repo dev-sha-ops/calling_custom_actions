@@ -10,7 +10,7 @@ inputs:
 outputs:
   version:
     description: 'version'
-    value: ${{ env.input_version == 'true' && ${{steps.version.outputs.version}}  || ${{steps.auto.outputs.version}}}}
+    value: ${{ env.input_version == 'true' && steps.version.outputs.version || steps.auto.outputs.version }}
 runs:
   using: "composite"
   steps:
