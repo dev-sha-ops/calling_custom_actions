@@ -26,5 +26,7 @@ jobs:
           version: v1
 
       - name: Check GITHUB_OUTPUT
+        env:
+          version: ${{ steps.vs.outputs.version }}
         run: | 
-          echo ${{ steps.version.outputs.version }}
+          echo $version
