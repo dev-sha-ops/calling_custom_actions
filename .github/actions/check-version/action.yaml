@@ -2,9 +2,11 @@ name: Auto Version
 inputs:
   token:
     required: true
+    description: 'token'
   version:
     required: false
     type: string
+    description: 'version'
 
 runs:
   using: "composite"
