@@ -20,6 +20,10 @@ jobs:
 
       - name: Run Custom Action
         uses: ./.github/actions/check-version/
+        id: vs
         with:
           token: ${{ github.sha }}
           version: v1
+      - name: Check GITHUB_OUTPUT
+        run: | 
+          echo ${{ steps.vs.output.version }}
