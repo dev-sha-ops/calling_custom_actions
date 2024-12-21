@@ -1,0 +1,28 @@
+name: Auto Version
+inputs:
+  token:
+    required: true
+  version:
+    required: false
+    type: string
+
+runs:
+  using: "composite"
+  steps:
+    - name: Check Input Version
+      shell: bash
+      id: version
+      run: |
+        if [[ -z "${{ inputs.version }}" ]]; then
+          echo "input_version=true" >> GITHUB_ENV
+        else
+          echo "version=${{ inputs.version }}" >> $GITHUB_OUTPUT
+          echo "input_version=false" >> GITHUB_ENV
+
+    - name: Running Auto Version
+      if: env.input_version == 'false'
+      run: |
+        echo $env
+        echo ================++++++=================
+        env
+

@@ -19,7 +19,7 @@ jobs:
           tree
 
       - name: Run Custom Action
-        uses: dev-sha-ops/shared_library/.github/actions/build@main
+        uses: .github/actions/check-version@main
         with:
-          tags: ${{ github.sha }}
-          
+          token: ${{ github.sha }}
+          version: v1
