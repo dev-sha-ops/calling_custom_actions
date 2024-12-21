@@ -21,6 +21,7 @@ runs:
 
     - name: Running Auto Version
       if: env.input_version == 'false'
+      shell: bash
       run: |
         echo $env
         echo ================++++++=================
