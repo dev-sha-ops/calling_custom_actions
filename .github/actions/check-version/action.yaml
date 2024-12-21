@@ -18,7 +18,7 @@ runs:
         else
           echo "version=${{ inputs.version }}" >> $GITHUB_OUTPUT
           echo "input_version=false" >> GITHUB_ENV
-
+        fi
     - name: Running Auto Version
       if: env.input_version == 'false'
       shell: bash
