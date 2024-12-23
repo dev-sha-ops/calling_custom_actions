@@ -1,0 +1,17 @@
+name: Auto Version
+outputs:
+  version:
+    description: 'version'
+    value: ${{ steps.version.outputs.version }}
+runs:
+  using: "composite"
+  steps:
+    - name: Running Auto Version
+      shell: bash
+      id: version
+      run: |
+        echo $env
+        echo "version=auto_v2" >> $GITHUB_OUTPUT
+        echo ================++++++=================
+        env
+

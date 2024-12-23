@@ -1,4 +1,4 @@
-name: Auto Version
+name: Check Version
 inputs:
   token:
     required: true
@@ -24,14 +24,9 @@ runs:
           echo "version=${{ inputs.version }}" >> $GITHUB_OUTPUT
           echo "input_version=true" >> GITHUB_ENV
         fi
-    - name: Running Auto Version
-      if: env.input_version == 'false'
-
-      shell: bash
+    - name: Run Custom Action
+      uses: ./.github/actions/auto-version/
       id: auto
-      run: |
-        echo $env
-        echo "version=auto_v2" >> $GITHUB_OUTPUT
-        echo ================++++++=================
-        env
+      with:
+        token: ${{ github.sha }}
 
