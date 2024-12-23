@@ -10,7 +10,7 @@ inputs:
 outputs:
   version:
     description: 'version'
-    value: ${{ env.input_version == 'true' && steps.version.outputs.version || steps.auto.outputs.version }}
+    value: ${{ steps.version.outputs.version || steps.auto.outputs.version }}
 runs:
   using: "composite"
   steps:
@@ -25,6 +25,7 @@ runs:
           echo "input_version=true" >> GITHUB_ENV
         fi
     - name: Run Custom Action
+      if: ${{ env.input_version == false }}
       uses: ./.github/actions/auto-version/
       id: auto
       with:
