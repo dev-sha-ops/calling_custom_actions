@@ -23,7 +23,6 @@ jobs:
         id: vs
         with:
           token: ${{ github.sha }}
-          version: v3
 
       - name: Check GITHUB_OUTPUT
         env:
