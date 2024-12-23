@@ -19,7 +19,7 @@ jobs:
           tree
 
       - name: Run Custom Action
-        uses: ./.github/actions/check-version/
+        uses: ./.github/actions/auto-version/
         id: vs
         with:
           token: ${{ github.sha }}

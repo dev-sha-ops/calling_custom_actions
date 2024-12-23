@@ -10,24 +10,14 @@ inputs:
 outputs:
   version:
     description: 'version'
-    value: ${{ steps.version.outputs.version || steps.auto.outputs.version }}
+    value: ${{ steps.version.outputs.version || inputs.version }}
 runs:
   using: "composite"
   steps:
-    - name: Check Input Version
-      shell: bash
-      id: version
-      run: |
-        if [[ -z "${{ inputs.version }}" ]]; then
-          echo "input_version=false" >> GITHUB_ENV
-        else
-          echo "version=${{ inputs.version }}" >> $GITHUB_OUTPUT
-          echo "input_version=true" >> GITHUB_ENV
-        fi
     - name: Run Custom Action
-      if: ${{ env.input_version == false }}
+      if: ${{ inputs.version == '' }}
       uses: ./.github/actions/auto-version/
-      id: auto
+      id: version
       with:
         token: ${{ github.sha }}
 
